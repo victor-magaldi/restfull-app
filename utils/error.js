@@ -1,3 +1,8 @@
 module.exports = {
-  send: (err, req, resp, (code = 400)),
+  send: (err, req, res, code = 400) => {
+    console.log(`error = ${err}`);
+    res.status(code).json({
+      error: err,
+    });
+  },
 };
