@@ -41,4 +41,15 @@ module.exports = (app) => {
       }
     });
   });
+
+  routeUserId.put((req, res) => {
+    db.update({ _id: req.params.id }, req.body, (err) => {
+      if (err) {
+        app.utils.error.send(err, req, res);
+      } else {
+        // Object.assign junta os atributos dos objetos
+        res.status(200).json(Object.assign(req.body, req.body));
+      }
+    });
+  });
 };
