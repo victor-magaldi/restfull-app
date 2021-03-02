@@ -52,4 +52,15 @@ module.exports = (app) => {
       }
     });
   });
+
+  routeUserId.delete((req, res) => {
+    db.remove({ _id: req.params.id }, {}, (err) => {
+      if (err) {
+        app.utils.error.send(err, req, res);
+      } else {
+        // Object.assign junta os atributos dos objetos
+        res.status(200).json(req.params.id);
+      }
+    });
+  });
 };
